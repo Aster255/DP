@@ -14,18 +14,20 @@ const canSum = (n, arr, memo = {}) => {
     return false;
   } else {
     for (e of arr) {
-      memo[e] = canSum(n - e, arr, memo);
-      if (memo[e] === true) {
+      memo[n - e] = canSum(n - e, arr, memo);
+      if (memo[n - e] === true) {
         return true;
       }
     }
-    memo[n] = false;
     return false;
   }
 };
 
-console.log(canSum(7, [2, 3])); //true
-console.log(canSum(7, [5, 3, 4, 7])); //true
-console.log(canSum(7, [2, 4])); // false
-console.log(canSum(8, [2, 3, 5])); // true
-console.log(canSum(300, [7, 14])); // false
+// console.log(canSum(7, [2, 3])); //true
+// console.log(canSum(7, [5, 3, 4, 7])); //true
+// console.log(canSum(7, [3, 4]));
+console.log(canSum(9, [4, 3]));
+
+// console.log(canSum(7, [2, 4])); // false
+// console.log(canSum(8, [2, 3, 5])); // true
+// console.log(canSum(300, [3, 4])); // false

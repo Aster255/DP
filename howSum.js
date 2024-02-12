@@ -24,20 +24,15 @@ const canSum = (n, arr, memo = {}) => {
   }
 };
 
-// console.log(canSum(7, [2, 3])); //true
-// console.log(canSum(7, [5, 3, 4, 7])); //true
-// console.log(canSum(7, [2, 4])); // false
-// console.log(canSum(8, [2, 3, 5])); // true
-// console.log(canSum(300, [7, 14])); // false
-
 const howSum = (n, arr, memo = {}) => {
   const z = [];
   if (!canSum(n, arr)) return null;
   while (n) {
-    for (e of arr) {
+    for (let e of arr) {
       if (canSum(n - e, arr, memo)) {
         z.push(e);
         n = n - e;
+        break;
       }
     }
   }
@@ -45,7 +40,7 @@ const howSum = (n, arr, memo = {}) => {
 };
 
 console.log(howSum(7, [2, 3]));
-console.log(howSum(7, [5, 3, 4, 7]));
+console.log(howSum(7, [3, 4]));
 console.log(howSum(7, [2, 4]));
 console.log(howSum(8, [2, 3, 5]));
 console.log(howSum(300, [7, 14]));
